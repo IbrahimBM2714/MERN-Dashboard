@@ -1,0 +1,36 @@
+.userDetail {
+  background-color: rebeccapurple;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  background-color: rebeccapurple;
+  margin-top: 10px;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.cat {
+  font-weight: bold;
+}
+
+.logout {
+  display: flex;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 100%;
+}
+
+.logout:hover {
+  background-color: #2e374a;
+}
