@@ -1,0 +1,15 @@
+.top{
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rebeccapurple;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addButton{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}

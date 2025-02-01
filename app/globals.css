@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0.5%;
+    /* height: 100vh; */
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    background: linear-gradient(to right, #3a80ba 1px, transparent 1px),
+      linear-gradient(to bottom, #3a80ba 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: #ffffff; /* Dark blue background */
+    color: #000000; /* Light text for contrast */
+    margin-bottom: 0px;
+  }
+
+
+a{
+  text-decoration: none;
+  color:white
+}
+
