@@ -1,9 +1,14 @@
+import { fetchUsers } from "@/app/lib/data";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import Search from "@/app/ui/dashboard/search/search";
 import styles from "@/app/ui/dashboard/users/users.module.css";
 import Link from "next/link";
 
-const ProductsPage = () => {
+const UsersPage = async () => {
+  const users = await fetchUsers();
+
+  console.log(users);
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -24,23 +29,25 @@ const ProductsPage = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Jamal</td>
-            <td>Jamal@gmail.com</td>
-            <td>i dont know lol</td>
-            <td>Prime Minister</td>
-            <td>Alive</td>
-            <td>
-              <Link href="/dashboard/users/test">
-                <button className={`${styles.button} ${styles.view}`}>
-                  View
+          {users.map((user) => (
+            <tr key={user.id} >
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+              <td>{user.createdAt?.toString().slice(4, 16)}</td>
+              <td>{user.isAdmin ? "Admin": "Client"}</td>
+              <td>{user.isActive ? "Active": "Passive"}</td>
+              <td>
+                <Link href={`/dashboard/users/${user.id}`}>
+                  <button className={`${styles.button} ${styles.view}`}>
+                    View
+                  </button>
+                </Link>
+                <button className={`${styles.button} ${styles.delete}`}>
+                  Delete
                 </button>
-              </Link>
-              <button className={`${styles.button} ${styles.delete}`}>
-                Delete
-              </button>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <Pagination />
@@ -48,4 +55,4 @@ const ProductsPage = () => {
   );
 };
 
-export default ProductsPage;
+export default UsersPage;
