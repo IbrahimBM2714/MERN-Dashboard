@@ -1,15 +1,47 @@
-.top{
-    margin-top: 10px;
-    margin-left: 5px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rebeccapurple;
-    display: flex;
-    justify-content: space-between;
+.container {
+  background-color: rebeccapurple;
+  margin-left: 5px;
+  margin-top: 5px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.addButton{
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
+.top {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rebeccapurple;
+  display: flex;
+  justify-content: space-between;
+}
+
+.addButton {
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  color: white;
+}
+
+.table td {
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.button {
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view {
+  background-color: teal;
+}
+
+.delete {
+  background-color: crimson;
 }

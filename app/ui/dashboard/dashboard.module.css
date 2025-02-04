@@ -4,8 +4,12 @@
 
 .menu{
     flex: 1; 
+    min-height: 98vh;
+    border-radius: 10px;
+    background-color: rebeccapurple;
 }
 
 .content{
     flex: 4;
+    max-height: 98vh;
 }
