@@ -1,13 +1,14 @@
+import { deleteUser } from "@/app/lib/actions";
 import { fetchUsers } from "@/app/lib/data";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import Search from "@/app/ui/dashboard/search/search";
 import styles from "@/app/ui/dashboard/users/users.module.css";
 import Link from "next/link";
 
-const UsersPage = async () => {
-  const users = await fetchUsers();
-
-  console.log(users);
+const UsersPage = async ({ searchParams }) => {
+  const q = searchParams?.q || "";
+  const page = searchParams?.pg || 1;
+  const { count, users } = await fetchUsers(q, page);
 
   return (
     <div className={styles.container}>
@@ -30,27 +31,30 @@ const UsersPage = async () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} >
+            <tr key={user.id}>
               <td>{user.username}</td>
               <td>{user.email}</td>
               <td>{user.createdAt?.toString().slice(4, 16)}</td>
-              <td>{user.isAdmin ? "Admin": "Client"}</td>
-              <td>{user.isActive ? "Active": "Passive"}</td>
+              <td>{user.isAdmin ? "Admin" : "Client"}</td>
+              <td>{user.isActive ? "Active" : "Passive"}</td>
               <td>
                 <Link href={`/dashboard/users/${user.id}`}>
                   <button className={`${styles.button} ${styles.view}`}>
                     View
                   </button>
                 </Link>
-                <button className={`${styles.button} ${styles.delete}`}>
-                  Delete
-                </button>
+                <form action={deleteUser}>
+                  <input type="hidden" name="id" value={user.id} />
+                  <button className={`${styles.button} ${styles.delete}`}>
+                    Delete
+                  </button>
+                </form>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };
