@@ -6,7 +6,7 @@ export const connectToDB = async () => {
 
     try {
         if (connection.isConnected) return;
-        const db = await mongoose.connect("mongodb+srv://admin:admin123admin@clusterone.7daaj.mongodb.net/dashboard?retryWrites=true&w=majority&appName=ClusterOne")
+        const db = await mongoose.connect(process.env.MONGO_URL)
         connection.isConnected = db.connections[0].readyState;
     } catch (error) {
         throw new Error(error)
