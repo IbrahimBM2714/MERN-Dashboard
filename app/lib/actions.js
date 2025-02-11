@@ -1,3 +1,5 @@
+"use server"
+
 import { revalidatePath } from "next/cache"
 import { Product, User } from "./models"
 import { connectToDB } from "./utils"
@@ -161,15 +163,17 @@ export const deleteProduct = async (formData) => {
 }
 
 export const authenticate = async (formData) => {
-    "use server"
     const { username, password } = Object.fromEntries(formData)
 
     console.log({ username, password })
 
-    try {
-        await signIn("credentials", { username, password })
-    } catch (error) {
-        // console.log(error)
-        throw new Error("Error while authenticating")
-    }
+    return { username, password }
+
+    // try {
+    //     const result = await signIn("credentials", { username, password, redirect: false })
+    //     return result
+    // } catch (error) {
+    //     console.log("\n\n\n\n\nERROR WHILE AUTHENTICATION: ", error)
+    //     throw new Error("Error while authenticating")
+    // }
 }

@@ -13,7 +13,7 @@ const login = async (credentials) => {
         connectToDB();
         const user = await User.findOne({ username: credentials.username });
 
-        if (!user || !user.isAdmin) throw new Error("Wrong credentials!");
+        if (!user) throw new Error("Wrong credentials!");
 
         // const isPasswordCorrect = await bcrypt.compare(
         //     credentials.password,
@@ -45,8 +45,10 @@ export const { signIn, signOut, auth } = NextAuth({
                 console.log("\n\n")
                 try {
                     const user = await login(credentials);
+                    console.log(user)
                     return user;
                 } catch (err) {
+                    console.log(`Login failed: ${err.message}`)
                     return null;
                 }
             },
